@@ -1,0 +1,26 @@
+name: Ci
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sast_scan: 
+    name: Run Bandit Scan
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+  
+    - name: Install Python
+      uses: action/setup-python@v2
+      with:
+        python-version: 3.8
+  
+    - name: Install Bandit
+      run: pip install bandit
+  
+    - name: Run Bandit Scan
+      run: bandit -r .
