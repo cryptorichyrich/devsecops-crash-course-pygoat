@@ -1,9 +1,6 @@
 name: Ci
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
   sast_scan: 
